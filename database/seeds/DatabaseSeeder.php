@@ -1,5 +1,7 @@
 <?php
 
+use App\Product;
+use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call([
+            PermissionsTableSeeder::class,
+            UsersTableSeeder::class,
+            ProductsTableSeeder::class
+        ]);
     }
 }

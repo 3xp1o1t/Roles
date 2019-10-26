@@ -1,3 +1,5 @@
+<p>1-. Error al correr la migracion con Permission</p>
+- [Solucion: Cambiar en .env CACHE_DRIVER=File a array]
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
