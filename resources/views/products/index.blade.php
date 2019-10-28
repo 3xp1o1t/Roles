@@ -47,7 +47,12 @@
                 </div>
                 @can('products.show')
                     <div class="card-footer">
-                        <example-component can_see_me="false"></example-component>
+{{--                        <example-component can_see_me="false">--}}
+
+{{--                        </example-component>--}}
+                        <product-component puede_editar="{{ Auth::user()->can('products.edit') }}">
+
+                        </product-component>
                     </div>
                 @endcan
                 </div>
