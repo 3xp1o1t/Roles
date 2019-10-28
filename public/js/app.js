@@ -1853,8 +1853,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    'can_see_me': false
+  },
+  data: function data() {
+    return {
+      user_id: 21 // Este usuario tenemos que extraerlo al componente de alguna manera.
+
+    };
+  },
+  computed: {
+    canSeeThisShit: function canSeeThisShit() {
+      var _this = this;
+
+      // return this.authorize(user => this.user_id === user.id);    // Todo el objeto del usuario.
+      // return this.authorize(user => this.user_id === user);       // Solo el id del usuario.
+      return this.authorize(function (user) {
+        return _this.can_see_me;
+      });
+    }
+  },
+  methods: {},
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -37168,32 +37188,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Example Component")
+          ]),
+          _vm._v(" "),
+          _vm.canSeeThisShit
+            ? _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    I'm an example component.\n                "
+                )
+              ])
+            : _vm._e()
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49363,10 +49378,19 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
+ * Obtener el usuario logueado para aplicar las directivas @can de laravel blade
+ */
+
+window.Vue.prototype.authorize = function (handler) {
+  var user = window.App.user;
+  return user ? handler(user) : false;
+};
+/**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 
 var app = new Vue({
   el: '#app'
@@ -49506,8 +49530,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\roles\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\roles\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\Roles\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\Roles\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -90,5 +90,12 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        // Podemos enviar Auth::id() y enviamos solo el id, pero tambien podemos enviar el Auth::user() y enviamos todos los
+        // datos del usuario actual.
+        window.App = {!! json_encode([
+        'user' => Auth::id()
+    ]) !!};
+    </script>
 </body>
 </html>

@@ -45,6 +45,11 @@
                     </table>
                     {{ $products->render() }}
                 </div>
+                @can('products.show')
+                    <div class="card-footer">
+                        <example-component can_see_me="false"></example-component>
+                    </div>
+                @endcan
                 </div>
             </div>
         </div>
